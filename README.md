@@ -1,10 +1,15 @@
 # random_story
 Duke ECE 551 group work
 
-# group cooperation
-1. use vector<string> to store story template
-2. use map<string, set<string> > to store categories and corresponding words
-3. realize a chooseWord function. when first call it, the output should be certain / concrete, same as the output in 060 eval2 step3.
-4. replace structs in 060 eval2 step3 by C++ data structure 
+Author: Zoe Yang, Luke Liu, Zhibo Jia, Zeying Huang
+ 
 
-# time managem
+## Task description:
+<img src="task_description.jpg">
+
+## Work Division：
+1. Store story template from story text file into vector<stirng>. (Zoe)
+2. Store categories and corresponding words from words test file into map<string, set<string> >. (Luke)
+3. Randomly choose word from specified category. (Zoe)
+4. Replace 'blanks' in the story template with chosen word. (Zhibo & Zeying)
+
