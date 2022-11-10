@@ -5,7 +5,7 @@ Author: Zoe Yang, Luke Liu, Zhibo Jia, Zeying Huang
  
 
 ## Task description:
-<img src="task_description.jpg", width="70%">
+<img src="task_description.jpg" width="70%">
 
 ## Work Division：
 1. Store story template from story text file into vector<stirng>. (Zoe)
