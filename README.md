@@ -13,3 +13,4 @@ Author: Zoe Yang, Luke Liu, Zhibo Jia, Zeying Huang
 3. Randomly choose word from specified category. (Zoe)
 4. Replace 'blanks' in the story template with chosen word. (Zhibo & Zeying)
 
+
