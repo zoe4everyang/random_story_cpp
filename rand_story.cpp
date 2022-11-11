@@ -10,14 +10,15 @@ void print_story(std::vector<std::string> story){
 }
 
 // store each line of story template into a vector<string> 
-void store_story_template(std::istream & story_file){
+std::vector<std::string> store_story_template(std::istream & story_file){
     std::string line;
     std::vector<std::string> story_template; 
     while(!story_file.eof()){
         std::getline(story_file, line);
         story_template.push_back(line);
     }
-    print_story(story_template);
+    // print_story(story_template);
+    return story_template;
 }
 
 // randomly choose a word from specified category "cat_name"
@@ -33,11 +34,27 @@ std::string choose_word(std::string cat_name, std::map<std::string, std::set<std
     }
     return *it;
 }
-
-
+/*-------------------------------------------------------------------------
+-------------   parse category : word pair into map   ---------------------
+---------------------------------------------------------------------------*/
+void printWords(std::map<std::string, std::set<std::string> > ans) {
+    std::map<std::string, std::set<std::string> >::iterator it_map;
+    it_map = ans.begin();
+    while (it_map != ans.end()) {
+        std::cout << " " << it_map->first << ": " << std::endl;
+        std::set<std::string>::iterator it_set;
+        it_set = it_map->second.begin();
+        while (it_set != it_map->second.end()) {
+            std::cout << "\t" << *it_set << std::endl;
+            ++it_set;
+        }
+        ++it_map;
+    }
+}
 
 
 // main function for zoe's part (store_story_template) for now
+/*
 int main(int argc, char** argv){
     if(argc != 2){
         std::cerr << "wrong number of arguments" << std::endl;
@@ -67,3 +84,4 @@ int main(int argc, char** argv){
 
     return EXIT_SUCCESS;
 }
+*/
