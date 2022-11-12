@@ -1,4 +1,4 @@
-#include "p13.hpp"
+#include "rand_story.hpp"
 
 // helper function to print out the story template stored in vector<string>
 void print_story(std::vector<std::string> story)
