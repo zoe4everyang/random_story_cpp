@@ -22,6 +22,10 @@ void store_story_template(std::istream & story_file){
 
 // randomly choose a word from specified category "cat_name"
 std::string choose_word(std::string cat_name, std::map<std::string, std::set<std::string> > cat_array){
+    if (cat_array.find(cat_name) == cat_array.end()) {
+        std::cerr << "Specified category name does not exist! " << std::endl;
+        exit(EXIT_FAILURE);
+    }
     std::set<std::string> curr_words = cat_array[cat_name];
     srand (time(NULL));
     int size = curr_words.size();
@@ -59,7 +63,7 @@ int main(int argc, char** argv){
     test_cat_array["fruit"] = test_words;
 
     // randomly choose a word from specified category and print out
-    std::string cat_name = "fruit";
+    std::string cat_name = "animal";
     std::string rand_word = choose_word(cat_name, test_cat_array);
     std::cout << std::endl;
     std::cout << "Choose random word from " << cat_name << ": " << rand_word << std::endl;
