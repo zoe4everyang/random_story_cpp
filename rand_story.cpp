@@ -26,8 +26,11 @@ std::vector<std::string> store_story_template(std::istream &story_file)
 }
 
 // randomly choose a word from specified category "cat_name"
-std::string choose_word(std::string cat_name, std::map<std::string, std::set<std::string> > cat_array)
-{
+std::string choose_word(std::string cat_name, std::map<std::string, std::set<std::string> > cat_array){
+    if (cat_array.find(cat_name) == cat_array.end()) {
+        std::cerr << "Specified category name does not exist! " << std::endl;
+        exit(EXIT_FAILURE);
+    }
     std::set<std::string> curr_words = cat_array[cat_name];
     srand(time(NULL));
     int size = curr_words.size();
