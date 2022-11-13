@@ -19,6 +19,7 @@ std::vector<std::string> store_story_template(std::istream &story_file)
     while (!story_file.eof())
     {
         std::getline(story_file, line);
+        line.push_back('\n');
         story_template.push_back(line);
     }
     // print_story(story_template);
@@ -179,33 +180,20 @@ void makeStory(std::vector<std::string> &story_template, std::map<std::string, s
     }
 }
 
-//for test
-int main()
-{
-    std::string line = "Once upon a time, there was a _animal. This _1 lived in a very";
-    line.push_back('\n');
+int main (int argc, char** argv) {
+    if(argc != 3){
+        std::cerr<<"invalid input"<<std::endl;
+        return EXIT_FAILURE;
+    }
+    std::ifstream word_file(argv[1]);
+    std::ifstream story_file(argv[2]);
+    std::map<std::string, std::set<std::string> > catArr;
     std::vector<std::string> story_template;
-    story_template.push_back(line);
-    line = "_adjective _place. One day, it left its _2 _2 and met a _animal.";
-    line.push_back('\n');
-    story_template.push_back(line);
-
-    std::map<std::string, std::set<std::string> > test_cat_array;
-    std::set<std::string> test_words;
-    test_words.insert("dragon");
-    test_words.insert("walrus");
-    test_cat_array["animal"] = test_words;
-    test_words.clear();
-    test_words.insert("cave");
-    test_cat_array["place"] = test_words;
-    test_words.clear();
-    test_words.insert("peculiar");
-    test_words.insert("scary");
-    test_words.insert("peaceful");
-    test_cat_array["adjective"] = test_words;
-
-    makeStory(story_template, test_cat_array);
+    catArr = parseCatArr<std::string>(word_file);
+    story_template = store_story_template(story_file);
+    // printWords(catArr);
+    // print_story(story_template);
+    makeStory(story_template, catArr);
     print_story(story_template);
-
-    return 0;
+    return EXIT_SUCCESS;
 }
